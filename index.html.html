@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manoj | Data Science & AI Engineer</title>
+
+  <!-- ═══════════════════════════════════════════════
+       FONTS: Inter + Poppins from Google Fonts
+  ═══════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ═══════════════════════════════════════════════
+       TAILWIND CSS v3 Play CDN (Development Grade)
+       Replace with production build for deployment
+  ═══════════════════════════════════════════════ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ═══════════════════════════════════════════════
+       DEVICONS – Tech Stack Icons
+  ═══════════════════════════════════════════════ -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+  />
+
+  <!-- ═══════════════════════════════════════════════
+       FONT AWESOME – UI Icons
+  ═══════════════════════════════════════════════ -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <!-- ═══════════════════════════════════════════════
+       TAILWIND CUSTOM CONFIG
+  ═══════════════════════════════════════════════ -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+            poppins: ["Poppins", "sans-serif"],
+          },
+          colors: {
+            // Cyberpunk Saffron
+            saffron: {
+              DEFAULT: "#FF9500",
+              light: "#FFB347",
+              dark: "#CC7700",
+              glow: "rgba(255,149,0,0.35)",
+            },
+            // Electric Teal
+            teal: {
+              DEFAULT: "#00F5D4",
+              light: "#7FFFD4",
+              dark: "#00C4A7",
+              glow: "rgba(0,245,212,0.35)",
+            },
+            // Dark Background Palette
+            obsidian: {
+              900: "#060811",
+              800: "#0D1117",
+              700: "#161B22",
+              600: "#1C2230",
+              500: "#21262D",
+              400: "#2D333B",
+              300: "#373E47",
+            },
+          },
+          animation: {
+            "data-stream": "dataStream 20s linear infinite",
+            "float-y": "floatY 6s ease-in-out infinite",
+            "pulse-slow": "pulse 4s ease-in-out infinite",
+            "spin-slow": "spin 20s linear infinite",
+            "gradient-shift": "gradientShift 8s ease infinite",
+            "slide-in-left": "slideInLeft 0.7s ease forwards",
+            "slide-in-up": "slideInUp 0.7s ease forwards",
+            "glow-pulse": "glowPulse 3s ease-in-out infinite",
+          },
+          keyframes: {
+            dataStream: {
+              "0%": { transform: "translateY(-100vh)" },
+              "100%": { transform: "translateY(100vh)" },
+            },
+            floatY: {
+              "0%, 100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-18px)" },
+            },
+            gradientShift: {
+              "0%, 100%": { backgroundPosition: "0% 50%" },
+              "50%": { backgroundPosition: "100% 50%" },
+            },
+            slideInLeft: {
+              from: { opacity: "0", transform: "translateX(-60px)" },
+              to: { opacity: "1", transform: "translateX(0)" },
+            },
+            slideInUp: {
+              from: { opacity: "0", transform: "translateY(40px)" },
+              to: { opacity: "1", transform: "translateY(0)" },
+            },
+            glowPulse: {
+              "0%, 100%": { boxShadow: "0 0 20px rgba(255,149,0,0.4)" },
+              "50%": { boxShadow: "0 0 45px rgba(255,149,0,0.8), 0 0 80px rgba(0,245,212,0.3)" },
+            },
+          },
+          backgroundSize: {
+            "300%": "300%",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       GLOBAL CUSTOM STYLES
+  ═══════════════════════════════════════════════ -->
+  <style>
+    /* ── Root & Body ──────────────────────────────── */
+    :root {
+      --saffron: #FF9500;
+      --teal: #00F5D4;
+      --obsidian: #060811;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: #060811;
+      color: #E6EDF3;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Custom Scrollbar ─────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0D1117; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #FF9500, #00F5D4);
+      border-radius: 10px;
+    }
+
+    /* ── Glassmorphism Card ───────────────────────── */
+    .glass {
+      background: rgba(13, 17, 23, 0.65);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+    }
+
+    .glass-hover {
+      transition: all 0.35s ease;
+    }
+    .glass-hover:hover {
+      background: rgba(22, 27, 34, 0.85);
+      border-color: rgba(255, 149, 0, 0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(255, 149, 0, 0.12),
+                  0 0 0 1px rgba(255, 149, 0, 0.15);
+    }
+
+    .glass-teal-hover:hover {
+      border-color: rgba(0, 245, 212, 0.35);
+      box-shadow: 0 20px 60px rgba(0, 245, 212, 0.12),
+                  0 0 0 1px rgba(0, 245, 212, 0.15);
+    }
+
+    /* ── Gradient Text ────────────────────────────── */
+    .gradient-text {
+      background: linear-gradient(135deg, #FF9500 0%, #FFB347 40%, #00F5D4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 300%;
+      animation: gradientShift 6s ease infinite;
+    }
+
+    .teal-text {
+      background: linear-gradient(90deg, #00F5D4, #7FFFD4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── Gradient Borders ─────────────────────────── */
+    .gradient-border {
+      position: relative;
+      border-radius: 16px;
+    }
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #FF9500, #00F5D4);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .gradient-border:hover::before { opacity: 1; }
+
+    /* ── Neon Glow Buttons ────────────────────────── */
+    .btn-saffron {
+      background: linear-gradient(135deg, #FF9500, #CC7700);
+      color: #060811;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .btn-saffron:hover {
+      box-shadow: 0 0 25px rgba(255,149,0,0.7), 0 0 60px rgba(255,149,0,0.3);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-outline-teal {
+      background: transparent;
+      color: #00F5D4;
+      font-weight: 600;
+      padding: 13px 32px;
+      border-radius: 50px;
+      border: 1.5px solid #00F5D4;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .btn-outline-teal:hover {
+      background: rgba(0, 245, 212, 0.1);
+      box-shadow: 0 0 25px rgba(0,245,212,0.5), 0 0 60px rgba(0,245,212,0.2);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* ── Navbar ───────────────────────────────────── */
+    .navbar-glass {
+      background: rgba(6, 8, 17, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+      color: #8B949E;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #FF9500, #00F5D4);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #FF9500; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Canvas Background ────────────────────────── */
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.045;
+      pointer-events: none;
+    }
+
+    /* ── Section Separators ───────────────────────── */
+    .section-sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,149,0,0.3), rgba(0,245,212,0.3), transparent);
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    /* ── Hero Profile Ring ────────────────────────── */
+    .profile-ring {
+      background: linear-gradient(135deg, #FF9500, #00F5D4, #FF9500);
+      background-size: 300%;
+      animation: gradientShift 4s ease infinite, glowPulse 3s ease-in-out infinite;
+      padding: 4px;
+      border-radius: 50%;
+    }
+
+    /* ── Skill Pill ───────────────────────────────── */
+    .skill-pill {
+      background: rgba(255, 149, 0, 0.08);
+      border: 1px solid rgba(255, 149, 0, 0.2);
+      color: #FFB347;
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .skill-pill:hover {
+      background: rgba(255, 149, 0, 0.18);
+      border-color: #FF9500;
+      box-shadow: 0 0 14px rgba(255,149,0,0.35);
+      transform: scale(1.05);
+    }
+
+    .skill-pill-teal {
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.2);
+      color: #00F5D4;
+    }
+    .skill-pill-teal:hover {
+      background: rgba(0, 245, 212, 0.18);
+      border-color: #00F5D4;
+      box-shadow: 0 0 14px rgba(0,245,212,0.35);
+    }
+
+    /* ── Tech Icon Card ───────────────────────────── */
+    .tech-card {
+      background: rgba(13, 17, 23, 0.7);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: all 0.35s ease;
+      cursor: default;
+    }
+    .tech-card:hover {
+      border-color: rgba(0,245,212,0.4);
+      background: rgba(0, 245, 212, 0.05);
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 16px 40px rgba(0,245,212,0.12);
+    }
+    .tech-card i {
+      font-size: 2.4rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ── Project Card ─────────────────────────────── */
+    .project-card {
+      background: rgba(13,17,23,0.72);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255,149,0,0.3);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,149,0,0.15);
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #FF9500, #00F5D4);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .live-badge {
+      background: linear-gradient(135deg, rgba(255,149,0,0.2), rgba(0,245,212,0.2));
+      border: 1px solid rgba(0,245,212,0.4);
+      color: #00F5D4;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00F5D4;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* ── NLP Edge Section ─────────────────────────── */
+    .nlp-section {
+      background: linear-gradient(135deg,
+        rgba(255,149,0,0.04) 0%,
+        rgba(0,245,212,0.06) 50%,
+        rgba(255,149,0,0.04) 100%);
+      border: 1px solid rgba(0,245,212,0.15);
+    }
+
+    /* ── Section Label ────────────────────────────── */
+    .section-label {
+      color: #00F5D4;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before, .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,245,212,0.4));
+    }
+    .section-label::after {
+      background: linear-gradient(90deg, rgba(0,245,212,0.4), transparent);
+    }
+
+    /* ── Stat Counter Card ────────────────────────── */
+    .stat-card {
+      border-radius: 14px;
+      background: rgba(255,149,0,0.06);
+      border: 1px solid rgba(255,149,0,0.15);
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      background: rgba(255,149,0,0.12);
+      border-color: rgba(255,149,0,0.4);
+      box-shadow: 0 0 30px rgba(255,149,0,0.15);
+    }
+
+    /* ── Timeline ─────────────────────────────────── */
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+      border-left: 2px solid rgba(0,245,212,0.2);
+      padding-bottom: 28px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00F5D4;
+      box-shadow: 0 0 12px rgba(0,245,212,0.6);
+    }
+    .timeline-item:last-child { border-left: 2px solid transparent; }
+
+    /* ── Mobile Menu ──────────────────────────────── */
+    .mobile-menu {
+      background: rgba(6,8,17,0.97);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Intersection Observer Fade-In ───────────────*/
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    .footer-link {
+      color: #8B949E;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .footer-link:hover { color: #FF9500; }
+
+    /* ── Contact Form ─────────────────────────────── */
+    .form-input {
+      background: rgba(22,27,34,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: #E6EDF3;
+      width: 100%;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      outline: none;
+      font-family: "Inter", sans-serif;
+    }
+    .form-input:focus {
+      border-color: rgba(0,245,212,0.5);
+      box-shadow: 0 0 0 3px rgba(0,245,212,0.08);
+    }
+    .form-input::placeholder { color: #484F58; }
+
+    /* ── Tooltip ──────────────────────────────────── */
+    [data-tooltip] { position: relative; }
+    [data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(22,27,34,0.95);
+      color: #00F5D4;
+      border: 1px solid rgba(0,245,212,0.3);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+    [data-tooltip]:hover::after { opacity: 1; }
+
+    /* ── Progress Bar ─────────────────────────────── */
+    .skill-bar-bg {
+      background: rgba(255,255,255,0.06);
+      border-radius: 50px;
+      height: 7px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #FF9500, #00F5D4);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.2s ease;
+    }
+    .skill-bar-fill.animated { transform: scaleX(1); }
+
+    /* ── Typing Cursor ────────────────────────────── */
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: #FF9500;
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body class="font-inter">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       DATA-STREAM MATRIX CANVAS BACKGROUND
+  ═══════════════════════════════════════════════════════════ -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION BAR
+  ═══════════════════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-glass transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2 group">
+  <div class="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center" 
+       style="background:linear-gradient(135deg,#FF9500,#00F5D4)">
+    
+    <img src="manoj.png" alt="M" class="w-full h-full object-cover">
+    
+  </div>
+  <span class="font-poppins font-bold text-lg hidden sm:block">
+    <span class="gradient-text">Manoj</span>
+  </span>
+</a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#stack" class="nav-link">Tech Stack</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#nlp" class="nav-link">NLP Edge</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- GitHub CTA + Hamburger -->
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MANOJDUBEY2" target="_blank" rel="noopener noreferrer"
+           class="hidden md:flex items-center gap-2 text-sm font-semibold text-obsidian-900 px-5 py-2 rounded-full transition-all duration-300 hover:scale-105"
+           style="background:linear-gradient(135deg,#FF9500,#00F5D4);color:#060811">
+          <i class="fab fa-github text-base"></i> GitHub
+        </a>
+        <button id="menu-toggle" class="md:hidden text-gray-400 hover:text-saffron transition-colors">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden px-6 py-5 space-y-4">
+      <a href="#about"    class="block nav-link text-base py-2">About</a>
+      <a href="#stack"    class="block nav-link text-base py-2">Tech Stack</a>
+      <a href="#projects" class="block nav-link text-base py-2">Projects</a>
+      <a href="#nlp"      class="block nav-link text-base py-2">NLP Edge</a>
+      <a href="#contact"  class="block nav-link text-base py-2">Contact</a>
+      <a href="https://github.com/MANOJDUBEY2" target="_blank"
+         class="btn-saffron text-sm w-full justify-center mt-2">
+        <i class="fab fa-github"></i> View GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+
+    <!-- Ambient Glows -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle, rgba(255,149,0,0.08) 0%, transparent 70%); filter:blur(60px)"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle, rgba(0,245,212,0.08) 0%, transparent 70%); filter:blur(60px)"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+
+      <!-- ── Left: Text Content ── -->
+      <div class="reveal-left order-2 lg:order-1">
+
+        <!-- Greeting Tag -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+             style="background:rgba(0,245,212,0.08);border:1px solid rgba(0,245,212,0.2)">
+          <span class="live-dot"></span>
+          <span class="text-xs font-semibold tracking-widest uppercase" style="color:#00F5D4">
+            Available for Opportunities
+          </span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-poppins font-black leading-tight mb-6"
+            style="font-size:clamp(2.2rem,5vw,3.8rem)">
+          Architecting the Future<br/>
+          <span class="gradient-text">with Data & AI</span>
+        </h1>
+
+        <!-- Typing Sub-Headline -->
+        <p class="text-gray-400 text-xl mb-3 font-light">
+          Hi, I'm <span class="font-bold" style="color:#FF9500">Manoj</span> —
+        </p>
+        <div class="text-gray-300 text-lg mb-8 h-8 flex items-center">
+          <span id="typed-text" class="font-medium"></span>
+          <span class="typing-cursor"></span>
+        </div>
+
+        <!-- Sub Description -->
+        <p class="text-gray-400 text-base leading-relaxed mb-10 max-w-lg">
+          BCA Graduate from <span class="font-semibold" style="color:#00F5D4">Technia Institute</span>,
+          specialising in real-world automation solutions that leverage
+          <span class="font-semibold" style="color:#FF9500">Machine Learning</span>,
+          <span class="font-semibold" style="color:#00F5D4">Prompt Engineering</span>, and
+          <span class="font-semibold" style="color:#FF9500">Real-Time Data Analysis</span>
+          to deliver measurable business impact.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a href="#projects" class="btn-saffron">
+            <i class="fas fa-rocket"></i> View My Projects
+          </a>
+          <a href="https://github.com/MANOJDUBEY2" target="_blank" rel="noopener noreferrer"
+             class="btn-outline-teal">
+            <i class="fab fa-github"></i> Connect on GitHub
+          </a>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="flex flex-wrap gap-6">
+          <div>
+            <div class="text-3xl font-black gradient-text font-poppins">5+</div>
+            <div class="text-xs text-gray-500 mt-1">Real-World Projects</div>
+          </div>
+          <div class="w-px bg-gray-700"></div>
+          <div>
+            <div class="text-3xl font-black gradient-text font-poppins">Daily</div>
+            <div class="text-xs text-gray-500 mt-1">NLP Study Streak</div>
+          </div>
+          <div class="w-px bg-gray-700"></div>
+          <div>
+            <div class="text-3xl font-black gradient-text font-poppins">AI-Native</div>
+            <div class="text-xs text-gray-500 mt-1">Solution Architect</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: Profile Photo ── -->
+      <div class="flex justify-center lg:justify-end order-1 lg:order-2 reveal" style="transition-delay:0.2s">
+        <div class="relative">
+
+          <!-- Orbiting Ring -->
+          <div class="absolute inset-0 rounded-full animate-spin-slow pointer-events-none"
+               style="border:1px dashed rgba(255,149,0,0.2); margin:-24px"></div>
+          <div class="absolute inset-0 rounded-full pointer-events-none"
+               style="border:1px dashed rgba(0,245,212,0.15); margin:-48px; animation: spin 35s linear infinite reverse"></div>
+
+          <!-- Orbital Dots -->
+          <div class="absolute w-4 h-4 rounded-full animate-spin-slow pointer-events-none"
+               style="background:#FF9500;box-shadow:0 0 12px #FF9500;top:-8px;left:50%;margin-left:-8px"></div>
+
+          <!-- Profile Ring + Photo -->
+   <div class="profile-ring animate-float-y" style="width:280px;height:280px;display:flex;align-items:center;justify-content:center">
+  <div class="rounded-full overflow-hidden" style="width:270px;height:270px;background:#0D1117">
+    
+    <img
+      src="manoj.png"
+      alt="Manoj – Data Science & AI Professional"
+      style="width:100%;height:100%;object-fit:cover;object-position:top center"
+    />
+    
+  </div>
+</div>
+
+          <!-- Floating Badge: AI -->
+          <div class="absolute -bottom-2 -right-6 glass px-4 py-2 rounded-xl flex items-center gap-2 shadow-xl">
+            <span style="color:#FF9500" class="text-lg">🤖</span>
+            <div>
+              <div class="text-xs font-bold" style="color:#FF9500">AI-Native</div>
+              <div class="text-xs text-gray-500">Builder</div>
+            </div>
+          </div>
+
+          <!-- Floating Badge: NLP -->
+          <div class="absolute -top-2 -left-8 glass px-4 py-2 rounded-xl flex items-center gap-2 shadow-xl">
+            <span class="text-lg">🧠</span>
+            <div>
+              <div class="text-xs font-bold" style="color:#00F5D4">NLP</div>
+              <div class="text-xs text-gray-500">Daily Learner</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+      <span class="text-xs text-gray-500 tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-transparent to-saffron-DEFAULT opacity-60"
+           style="background:linear-gradient(180deg,transparent,#FF9500)"></div>
+    </div>
+  </section>
+
+  <!-- Section Separator -->
+  <div class="section-sep my-2"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ABOUT ME SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="about" class="relative py-28 overflow-hidden">
+    <!-- Ambient Glow -->
+    <div class="absolute right-0 top-0 w-72 h-72 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle,rgba(0,245,212,0.06) 0%,transparent 70%);filter:blur(50px)"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Label -->
+      <div class="section-label mb-16 reveal">About Me</div>
+
+      <div class="grid lg:grid-cols-5 gap-16 items-start">
+
+        <!-- ── Left: Narrative ── -->
+        <div class="lg:col-span-3 reveal-left">
+          <h2 class="font-poppins font-black text-4xl lg:text-5xl mb-8 leading-tight">
+            Turning Raw Data into<br/>
+            <span class="gradient-text">Intelligent Decisions</span>
+          </h2>
+
+          <div class="space-y-5 text-gray-400 text-base leading-relaxed">
+            <p>
+              I'm Manoj, a <span class="text-white font-semibold">BCA graduate from Technia Institute</span>
+              with a deep-rooted passion for unlocking the transformative power of data. My journey into
+              Data Science and Artificial Intelligence isn't just academic — it's driven by the conviction
+              that technology, when applied intelligently, can automate inefficiencies and redefine how
+              businesses operate.
+            </p>
+            <p>
+              My focus is on building <span style="color:#FF9500" class="font-semibold">AI-Native Solutions</span>
+              — systems that don't just process data, but learn from it, react to it in real time, and
+              generate decisions that amplify human potential. From designing
+              <span style="color:#00F5D4" class="font-semibold">real-time Machine Learning pipelines</span>
+              to crafting precise <span style="color:#FF9500" class="font-semibold">prompt engineering
+              frameworks</span> for LLM integration, I bridge the gap between complex AI research
+              and practical, deployable solutions.
+            </p>
+            <p>
+              What truly differentiates my approach is a relentless commitment to growth. Every single day,
+              I dedicate structured time to advancing my mastery in
+              <span style="color:#00F5D4" class="font-semibold">Natural Language Processing (NLP)</span> —
+              studying transformer architectures, fine-tuning methodologies, and context-aware agent design.
+              This daily discipline directly translates into smarter, more nuanced AI systems that
+              understand not just numbers, but the language of business itself.
+            </p>
+          </div>
+
+          <!-- NLP Highlight Callout -->
+          <div class="mt-8 p-5 rounded-2xl flex items-start gap-4"
+               style="background:linear-gradient(135deg,rgba(0,245,212,0.06),rgba(255,149,0,0.04));border:1px solid rgba(0,245,212,0.2)">
+            <div class="text-3xl mt-1 flex-shrink-0">🎯</div>
+            <div>
+              <div class="font-bold text-white mb-2">Dedicated Daily Learner of Natural Language Processing</div>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                Building smarter, context-aware AI agents by studying NLP every single day —
+                from tokenisation and embeddings to transformer fine-tuning and RAG pipelines.
+              </p>
+            </div>
+          </div>
+
+          <!-- Skill Pills -->
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="skill-pill">Data Science</span>
+            <span class="skill-pill skill-pill-teal">Machine Learning</span>
+            <span class="skill-pill">Prompt Engineering</span>
+            <span class="skill-pill skill-pill-teal">NLP (Daily Learner)</span>
+            <span class="skill-pill">LLM Integration</span>
+            <span class="skill-pill skill-pill-teal">Data Automation</span>
+            <span class="skill-pill">Real-Time Analysis</span>
+          </div>
+        </div>
+
+        <!-- ── Right: Timeline + Stats ── -->
+        <div class="lg:col-span-2 space-y-8 reveal" style="transition-delay:0.2s">
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-card">
+              <div class="text-3xl font-black font-poppins gradient-text">BCA</div>
+              <div class="text-xs text-gray-500 mt-2">Technia Institute</div>
+            </div>
+            <div class="stat-card" style="background:rgba(0,245,212,0.06);border-color:rgba(0,245,212,0.15)">
+              <div class="text-3xl font-black font-poppins" style="background:linear-gradient(135deg,#00F5D4,#7FFFD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">5+</div>
+              <div class="text-xs text-gray-500 mt-2">Projects Delivered</div>
+            </div>
+            <div class="stat-card col-span-2" style="background:rgba(0,245,212,0.04);border-color:rgba(0,245,212,0.12)">
+              <div class="text-2xl font-black font-poppins mb-1" style="color:#00F5D4">∞ Daily</div>
+              <div class="text-xs text-gray-500">NLP Study & Continuous Learning</div>
+            </div>
+          </div>
+
+          <!-- Journey Timeline -->
+          <div>
+            <h3 class="font-poppins font-bold text-lg text-white mb-6">My Journey</h3>
+            <div class="space-y-0">
+              <div class="timeline-item">
+                <div class="text-xs text-gray-500 mb-1">Foundation</div>
+                <div class="font-semibold text-white text-sm">BCA from Technia Institute</div>
+                <p class="text-xs text-gray-500 mt-1">Core CS fundamentals, algorithms, databases & web technologies.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="text-xs text-gray-500 mb-1">Specialisation</div>
+                <div class="font-semibold text-white text-sm">Data Science & ML Deep Dive</div>
+                <p class="text-xs text-gray-500 mt-1">Python, NumPy, Pandas, Scikit-Learn, TensorFlow — from theory to production.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="text-xs text-gray-500 mb-1">Mastery</div>
+                <div class="font-semibold text-white text-sm">Prompt Engineering & LLM Integration</div>
+                <p class="text-xs text-gray-500 mt-1">Advanced prompt design patterns, RAG architecture, and AI agent workflows.</p>
+              </div>
+              <div class="timeline-item" style="border-color:rgba(255,149,0,0.3)">
+                <div class="text-xs mb-1" style="color:#FF9500">Active Now</div>
+                <div class="font-semibold text-white text-sm">Daily NLP Research</div>
+                <p class="text-xs text-gray-500 mt-1">Transformers, BERT fine-tuning, semantic search & context-aware AI agents.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep my-2"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TECH STACK / CAPABILITIES SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="stack" class="relative py-28 overflow-hidden">
+    <div class="absolute left-0 bottom-0 w-80 h-80 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle,rgba(255,149,0,0.05) 0%,transparent 70%);filter:blur(50px)"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-label mb-6 reveal">Tech Stack & Capabilities</div>
+      <div class="text-center mb-16 reveal" style="transition-delay:0.1s">
+        <h2 class="font-poppins font-black text-4xl lg:text-5xl mb-4">
+          The Tools I Wield to<br/>
+          <span class="gradient-text">Build Intelligent Systems</span>
+        </h2>
+        <p class="text-gray-500 max-w-xl mx-auto text-base">
+          A curated arsenal of cutting-edge technologies, spanning the full spectrum from data wrangling to production AI deployment.
+        </p>
+      </div>
+
+      <!-- Category 1: Data Science -->
+      <div class="mb-12 reveal" style="transition-delay:0.1s">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">📊</span>
+          <h3 class="font-poppins font-bold text-xl text-white">Data Science</h3>
+          <div class="flex-1 h-px" style="background:linear-gradient(90deg,rgba(255,149,0,0.3),transparent)"></div>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+          <div class="tech-card" data-tooltip="Python">
+            <i class="devicon-python-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Python</span>
+          </div>
+          <div class="tech-card" data-tooltip="SQL">
+            <i class="devicon-mysql-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">SQL</span>
+          </div>
+          <div class="tech-card" data-tooltip="NumPy">
+            <i class="devicon-numpy-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">NumPy</span>
+          </div>
+          <div class="tech-card" data-tooltip="Pandas">
+            <i class="devicon-pandas-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Pandas</span>
+          </div>
+          <div class="tech-card" data-tooltip="Matplotlib">
+            <i class="devicon-matplotlib-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Matplotlib</span>
+          </div>
+          <div class="tech-card" data-tooltip="Jupyter">
+            <i class="devicon-jupyter-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Jupyter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2: AI / ML -->
+      <div class="mb-12 reveal" style="transition-delay:0.15s">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">🤖</span>
+          <h3 class="font-poppins font-bold text-xl text-white">Artificial Intelligence & ML</h3>
+          <div class="flex-1 h-px" style="background:linear-gradient(90deg,rgba(0,245,212,0.3),transparent)"></div>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+          <div class="tech-card" data-tooltip="TensorFlow">
+            <i class="devicon-tensorflow-original colored"></i>
+            <span class="text-xs text-gray-400 font-medium">TensorFlow</span>
+          </div>
+          <div class="tech-card" data-tooltip="Scikit-Learn">
+            <i class="devicon-scikitlearn-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Scikit-Learn</span>
+          </div>
+          <div class="tech-card" data-tooltip="PyTorch">
+            <i class="devicon-pytorch-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">PyTorch</span>
+          </div>
+          <div class="tech-card" data-tooltip="OpenCV">
+            <i class="devicon-opencv-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">OpenCV</span>
+          </div>
+          <div class="tech-card" data-tooltip="Keras" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <span class="text-3xl mb-2">🔬</span>
+            <span class="text-xs text-gray-400 font-medium">Keras</span>
+          </div>
+          <div class="tech-card" data-tooltip="HuggingFace" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <span class="text-3xl mb-2">🤗</span>
+            <span class="text-xs text-gray-400 font-medium">HuggingFace</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 3: Tools -->
+      <div class="mb-12 reveal" style="transition-delay:0.2s">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">🛠️</span>
+          <h3 class="font-poppins font-bold text-xl text-white">Tools & Environment</h3>
+          <div class="flex-1 h-px" style="background:linear-gradient(90deg,rgba(255,149,0,0.3),transparent)"></div>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+          <div class="tech-card" data-tooltip="Git">
+            <i class="devicon-git-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Git</span>
+          </div>
+          <div class="tech-card" data-tooltip="GitHub">
+            <i class="devicon-github-original" style="color:#E6EDF3"></i>
+            <span class="text-xs text-gray-400 font-medium">GitHub</span>
+          </div>
+          <div class="tech-card" data-tooltip="VS Code">
+            <i class="devicon-vscode-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">VS Code</span>
+          </div>
+          <div class="tech-card" data-tooltip="Linux">
+            <i class="devicon-linux-plain" style="color:#E6EDF3"></i>
+            <span class="text-xs text-gray-400 font-medium">Linux</span>
+          </div>
+          <div class="tech-card" data-tooltip="Docker">
+            <i class="devicon-docker-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">Docker</span>
+          </div>
+          <div class="tech-card" data-tooltip="PostgreSQL">
+            <i class="devicon-postgresql-plain colored"></i>
+            <span class="text-xs text-gray-400 font-medium">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 4: Advanced Capabilities -->
+      <div class="reveal" style="transition-delay:0.25s">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">⚡</span>
+          <h3 class="font-poppins font-bold text-xl" style="color:#FF9500">Advanced Capabilities</h3>
+          <div class="flex-1 h-px" style="background:linear-gradient(90deg,rgba(255,149,0,0.4),transparent)"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="glass glass-hover p-6 rounded-2xl" style="border-color:rgba(255,149,0,0.15)">
+            <div class="text-3xl mb-3">✍️</div>
+            <h4 class="font-bold text-white mb-2">Prompt Engineering</h4>
+            <p class="text-xs text-gray-500 leading-relaxed">Advanced chain-of-thought, few-shot, and ReAct prompting frameworks for maximising LLM accuracy.</p>
+            <div class="mt-3">
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%" data-width="90%"></div></div>
+              <div class="text-xs text-gray-600 mt-1">Expert Level</div>
+            </div>
+          </div>
+          <div class="glass glass-hover p-6 rounded-2xl" style="border-color:rgba(0,245,212,0.15)">
+            <div class="text-3xl mb-3">🔗</div>
+            <h4 class="font-bold text-white mb-2">LLM Integration</h4>
+            <p class="text-xs text-gray-500 leading-relaxed">Seamlessly integrating large language models (GPT-4, Gemini, Llama) into production-ready pipelines.</p>
+            <div class="mt-3">
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%" data-width="82%"></div></div>
+              <div class="text-xs text-gray-600 mt-1">Advanced</div>
+            </div>
+          </div>
+          <div class="glass glass-hover p-6 rounded-2xl" style="border-color:rgba(255,149,0,0.15)">
+            <div class="text-3xl mb-3">⚙️</div>
+            <h4 class="font-bold text-white mb-2">Data Automation</h4>
+            <p class="text-xs text-gray-500 leading-relaxed">End-to-end pipeline automation: ingestion, cleaning, transformation, and reporting — zero manual overhead.</p>
+            <div class="mt-3">
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%" data-width="88%"></div></div>
+              <div class="text-xs text-gray-600 mt-1">Expert Level</div>
+            </div>
+          </div>
+          <div class="glass glass-hover p-6 rounded-2xl" style="border-color:rgba(0,245,212,0.15)">
+            <div class="text-3xl mb-3">🧠</div>
+            <h4 class="font-bold text-white mb-2">NLP (Active Learning)</h4>
+            <p class="text-xs text-gray-500 leading-relaxed">Daily study of transformers, RAG, semantic search, and context-aware agent construction.</p>
+            <div class="mt-3">
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%" data-width="72%"></div></div>
+              <div class="text-xs text-gray-600 mt-1">Growing Rapidly ↑</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep my-2"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FEATURED PROJECTS SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="projects" class="relative py-28 overflow-hidden">
+    <div class="absolute right-0 top-0 w-96 h-96 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle,rgba(255,149,0,0.05) 0%,transparent 70%);filter:blur(60px)"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-label mb-6 reveal">Featured Projects</div>
+      <div class="text-center mb-16 reveal" style="transition-delay:0.1s">
+        <h2 class="font-poppins font-black text-4xl lg:text-5xl mb-4">
+          Where Code Meets<br/>
+          <span class="gradient-text">Real-World Impact</span>
+        </h2>
+        <p class="text-gray-500 max-w-xl mx-auto">
+          Every project solves a tangible problem. Explore how I translate AI research into deployable solutions that generate measurable value.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-7">
+
+        <!-- ── PROJECT 1: LIVE DEMO CONCEPT CARD (Featured) ── -->
+        <div class="project-card xl:col-span-2 reveal" style="transition-delay:0.05s">
+          <!-- Special Live Demo Top Bar -->
+          <div class="px-6 pt-5 pb-3 flex items-center justify-between"
+               style="background:linear-gradient(135deg,rgba(255,149,0,0.06),rgba(0,245,212,0.04))">
+            <div class="live-badge">
+              <span class="live-dot"></span> Live Demo Concept
+            </div>
+            <div class="text-xs text-gray-600">Featured Project ★</div>
+          </div>
+
+          <!-- Project Visual Mock -->
+          <div class="mx-6 rounded-xl overflow-hidden mb-5"
+               style="height:180px;background:linear-gradient(135deg,#0D1117 0%,#161B22 50%,#0D1117 100%);border:1px solid rgba(255,149,0,0.1);position:relative">
+            <!-- Mock Chart -->
+            <div style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;padding:16px;gap:6px">
+              <div style="width:30px;height:40%;background:linear-gradient(180deg,#FF9500,rgba(255,149,0,0.3));border-radius:4px 4px 0 0;opacity:0.8"></div>
+              <div style="width:30px;height:75%;background:linear-gradient(180deg,#FF9500,rgba(255,149,0,0.3));border-radius:4px 4px 0 0"></div>
+              <div style="width:30px;height:55%;background:linear-gradient(180deg,#FF9500,rgba(255,149,0,0.3));border-radius:4px 4px 0 0;opacity:0.8"></div>
+              <div style="width:30px;height:90%;background:linear-gradient(180deg,#00F5D4,rgba(0,245,212,0.3));border-radius:4px 4px 0 0"></div>
+              <div style="width:30px;height:65%;background:linear-gradient(180deg,#00F5D4,rgba(0,245,212,0.3));border-radius:4px 4px 0 0;opacity:0.8"></div>
+              <div style="width:30px;height:80%;background:linear-gradient(180deg,#FF9500,rgba(255,149,0,0.3));border-radius:4px 4px 0 0"></div>
+              <div style="width:30px;height:45%;background:linear-gradient(180deg,#FF9500,rgba(255,149,0,0.3));border-radius:4px 4px 0 0;opacity:0.7"></div>
+              <div style="width:30px;height:95%;background:linear-gradient(180deg,#00F5D4,rgba(0,245,212,0.3));border-radius:4px 4px 0 0"></div>
+            </div>
+            <div style="position:absolute;top:12px;left:16px">
+              <div style="color:#FF9500;font-size:0.72rem;font-weight:700;letter-spacing:0.1em">SUPPLY CHAIN ANALYTICS DASHBOARD</div>
+              <div style="color:#484F58;font-size:0.68rem;margin-top:3px">Real-time data stream — updating every 2s</div>
+            </div>
+            <div style="position:absolute;top:12px;right:16px;width:8px;height:8px;border-radius:50%;background:#00F5D4;box-shadow:0 0 10px #00F5D4;animation:pulse 1.5s ease-in-out infinite"></div>
+          </div>
+
+          <div class="px-6 pb-6">
+            <h3 class="font-poppins font-bold text-xl text-white mb-3">
+              Real-Time Supply Chain Analysis AI
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">
+              <span class="font-semibold" style="color:#FF9500">Problem Solved:</span> A local logistics client was spending 15+ hours/week on manual data reporting.
+              This system automates the entire reporting pipeline — ingesting raw supplier data, running anomaly detection,
+              and generating executive-ready dashboards in real time.
+              <span class="font-semibold" style="color:#00F5D4">Value Added: Automated 80% of data reporting, reducing turn-around from 15hrs to 18min.</span>
+            </p>
+
+            <!-- Tech Tags -->
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="skill-pill text-xs">Python</span>
+              <span class="skill-pill skill-pill-teal text-xs">Pandas</span>
+              <span class="skill-pill text-xs">Scikit-Learn</span>
+              <span class="skill-pill skill-pill-teal text-xs">Real-Time Streams</span>
+              <span class="skill-pill text-xs">Matplotlib</span>
+              <span class="skill-pill skill-pill-teal text-xs">SQL</span>
+            </div>
+
+            <!-- Interactive Upload Hint -->
+            <div class="rounded-xl p-4 mb-5 flex items-center gap-3"
+                 style="background:rgba(0,245,212,0.04);border:1px dashed rgba(0,245,212,0.25)">
+              <i class="fas fa-upload" style="color:#00F5D4"></i>
+              <div>
+                <div class="text-xs font-bold" style="color:#00F5D4">Interactive Demo Concept</div>
+                <div class="text-xs text-gray-600">Drop a CSV → Live AI analysis runs automatically on your data.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <a href="https://github.com/MANOJDUBEY2" target="_blank"
+                 class="btn-saffron text-sm px-5 py-3">
+                <i class="fab fa-github"></i> View Code
+              </a>
+              <button class="btn-outline-teal text-sm px-5 py-3" onclick="alert('Demo coming soon! Follow GitHub for updates.')">
+                <i class="fas fa-play"></i> Live Preview
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PROJECT 2 ── -->
+        <div class="project-card reveal" style="transition-delay:0.1s">
+          <div class="px-6 pt-5 pb-3 flex items-center justify-between"
+               style="background:linear-gradient(135deg,rgba(0,245,212,0.04),rgba(255,149,0,0.02))">
+            <span class="text-2xl">🔐</span>
+            <div class="text-xs text-gray-600">Security AI</div>
+          </div>
+
+          <div class="mx-6 rounded-xl overflow-hidden mb-5"
+               style="height:120px;background:linear-gradient(135deg,#0D1117,#161B22);border:1px solid rgba(0,245,212,0.1);display:flex;align-items:center;justify-content:center;position:relative">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:16px">
+              <div style="font-size:0.65rem;color:rgba(0,245,212,0.5);font-family:monospace;line-height:1.8">
+                AUTH OK ✓<br/>ANOMALY: 0<br/>SCANS: 2,847<br/>RISK: LOW
+              </div>
+              <div style="width:70px;height:70px;border-radius:50%;border:2px solid rgba(0,245,212,0.3);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,245,212,0.2)">
+                <i class="fas fa-shield-alt" style="color:#00F5D4;font-size:1.5rem"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6">
+            <h3 class="font-poppins font-bold text-lg text-white mb-2">
+              AI-Powered Anomaly Detection System
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">
+              <span class="font-semibold" style="color:#FF9500">Problem Solved:</span> Detecting fraudulent transactions and security breaches in high-throughput data streams.
+              <span class="font-semibold" style="color:#00F5D4">Value Added: 94% precision rate, flagging anomalies 340ms after occurrence.</span>
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-pill text-xs">Isolation Forest</span>
+              <span class="skill-pill skill-pill-teal text-xs">TensorFlow</span>
+              <span class="skill-pill text-xs">Python</span>
+            </div>
+            <a href="https://github.com/MANOJDUBEY2" target="_blank" class="btn-outline-teal text-xs px-4 py-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- ── PROJECT 3 ── -->
+        <div class="project-card reveal" style="transition-delay:0.15s">
+          <div class="px-6 pt-5 pb-3 flex items-center justify-between"
+               style="background:linear-gradient(135deg,rgba(255,149,0,0.04),rgba(0,245,212,0.02))">
+            <span class="text-2xl">💬</span>
+            <div class="text-xs text-gray-600">NLP Project</div>
+          </div>
+
+          <div class="mx-6 rounded-xl overflow-hidden mb-5"
+               style="height:120px;background:linear-gradient(135deg,#0D1117,#161B22);border:1px solid rgba(255,149,0,0.1);padding:14px;position:relative">
+            <div style="font-size:0.65rem;color:rgba(255,149,0,0.7);font-family:monospace;line-height:2">
+              <span style="color:#484F58">&gt;</span> Input: "Increase budget Q3"<br/>
+              <span style="color:#484F58">&gt;</span> Intent: FINANCE_UPDATE ✓<br/>
+              <span style="color:#484F58">&gt;</span> Confidence: 97.3%
+            </div>
+          </div>
+
+          <div class="px-6 pb-6">
+            <h3 class="font-poppins font-bold text-lg text-white mb-2">
+              Intelligent Business Intent Classifier
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">
+              <span class="font-semibold" style="color:#FF9500">Problem Solved:</span> Automating categorisation of internal business communications for priority routing.
+              <span class="font-semibold" style="color:#00F5D4">Value Added: Saves 3hrs/day of manual email triage for operations teams.</span>
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-pill text-xs">BERT</span>
+              <span class="skill-pill skill-pill-teal text-xs">HuggingFace</span>
+              <span class="skill-pill text-xs">NLP</span>
+            </div>
+            <a href="https://github.com/MANOJDUBEY2" target="_blank" class="btn-outline-teal text-xs px-4 py-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- ── PROJECT 4 ── -->
+        <div class="project-card reveal" style="transition-delay:0.2s">
+          <div class="px-6 pt-5 pb-3 flex items-center justify-between"
+               style="background:linear-gradient(135deg,rgba(0,245,212,0.04),rgba(255,149,0,0.02))">
+            <span class="text-2xl">📈</span>
+            <div class="text-xs text-gray-600">Predictive AI</div>
+          </div>
+
+          <div class="mx-6 rounded-xl overflow-hidden mb-5"
+               style="height:120px;background:linear-gradient(135deg,#0D1117,#161B22);border:1px solid rgba(0,245,212,0.1);display:flex;align-items:center;justify-content:center">
+            <svg width="200" height="80" viewBox="0 0 200 80">
+              <polyline points="10,70 40,50 70,60 100,35 130,20 160,30 190,10"
+                        fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#FF9500"/>
+                  <stop offset="100%" stop-color="#00F5D4"/>
+                </linearGradient>
+              </defs>
+              <circle cx="190" cy="10" r="4" fill="#00F5D4" style="filter:drop-shadow(0 0 4px #00F5D4)"/>
+            </svg>
+          </div>
+
+          <div class="px-6 pb-6">
+            <h3 class="font-poppins font-bold text-lg text-white mb-2">
+              Sales Forecasting ML Engine
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">
+              <span class="font-semibold" style="color:#FF9500">Problem Solved:</span> Replacing gut-feel sales targets with data-driven predictions for a retail client.
+              <span class="font-semibold" style="color:#00F5D4">Value Added: 91% forecast accuracy, enabling optimal inventory planning.</span>
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-pill text-xs">XGBoost</span>
+              <span class="skill-pill skill-pill-teal text-xs">Time-Series</span>
+              <span class="skill-pill text-xs">Pandas</span>
+            </div>
+            <a href="https://github.com/MANOJDUBEY2" target="_blank" class="btn-outline-teal text-xs px-4 py-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- ── PROJECT 5: Prompt Engineering ── -->
+        <div class="project-card reveal" style="transition-delay:0.25s">
+          <div class="px-6 pt-5 pb-3 flex items-center justify-between"
+               style="background:linear-gradient(135deg,rgba(255,149,0,0.05),rgba(0,245,212,0.02))">
+            <span class="text-2xl">✍️</span>
+            <div class="text-xs text-gray-600">Prompt Engineering</div>
+          </div>
+
+          <div class="mx-6 rounded-xl overflow-hidden mb-5"
+               style="height:120px;background:linear-gradient(135deg,#0D1117,#161B22);border:1px solid rgba(255,149,0,0.1);padding:12px">
+            <div style="font-size:0.62rem;color:#484F58;font-family:monospace;line-height:1.9">
+              <span style="color:#FF9500">SYSTEM:</span> You are a precise analyst...<br/>
+              <span style="color:#FF9500">CHAIN:</span> Step 1 → Step 2 → Validate<br/>
+              <span style="color:#00F5D4">OUTPUT:</span> Accuracy ↑ 40% vs baseline
+            </div>
+          </div>
+
+          <div class="px-6 pb-6">
+            <h3 class="font-poppins font-bold text-lg text-white mb-2">
+              Advanced Prompt Engineering Framework
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">
+              <span class="font-semibold" style="color:#FF9500">Problem Solved:</span> Inconsistent LLM outputs in enterprise workflows due to naive prompting.
+              <span class="font-semibold" style="color:#00F5D4">Value Added: 40% accuracy improvement with structured chain-of-thought templates.</span>
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-pill text-xs">GPT-4</span>
+              <span class="skill-pill skill-pill-teal text-xs">Chain-of-Thought</span>
+              <span class="skill-pill text-xs">LangChain</span>
+            </div>
+            <a href="https://github.com/MANOJDUBEY2" target="_blank" class="btn-outline-teal text-xs px-4 py-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- View All on GitHub -->
+      <div class="text-center mt-12 reveal">
+        <a href="https://github.com/MANOJDUBEY2" target="_blank" rel="noopener noreferrer"
+           class="btn-outline-teal text-base px-8 py-4">
+          <i class="fab fa-github text-lg"></i>
+          Explore All Projects on GitHub
+          <i class="fas fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep my-2"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THE NLP EDGE – SPECIAL DIFFERENTIATION SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="nlp" class="relative py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none"
+         style="background:linear-gradient(135deg,rgba(0,245,212,0.02) 0%,rgba(255,149,0,0.02) 100%)"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-label mb-12 reveal">The NLP Edge</div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- ── Left: Main NLP Content ── -->
+        <div class="reveal-left">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+               style="background:rgba(0,245,212,0.08);border:1px solid rgba(0,245,212,0.2)">
+            <span class="text-sm">🧠</span>
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#00F5D4">Why NLP Changes Everything</span>
+          </div>
+
+          <h2 class="font-poppins font-black text-4xl lg:text-5xl mb-8 leading-tight">
+            Beyond Numbers —<br/>
+            <span class="teal-text">Understanding Language</span>
+          </h2>
+
+          <div class="nlp-section p-8 rounded-3xl mb-8">
+            <p class="text-gray-300 text-lg leading-relaxed font-light italic mb-6"
+               style="border-left:3px solid #00F5D4;padding-left:20px;color:#C9D1D9">
+              "My focused study in NLP enables me to not just analyse numerical data, but also
+              leverage <strong style="color:#00F5D4">textual context</strong> for comprehensive
+              automated decision-making — transforming unstructured business language into
+              <strong style="color:#FF9500">structured, actionable intelligence.</strong>"
+            </p>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Most data scientists stop at numbers. I go further — because real-world business
+              data is 80% unstructured text: emails, reports, contracts, customer feedback.
+              By combining classical ML with NLP, I build systems that understand
+              <em>the full context</em> of a business situation, not just its metrics.
+            </p>
+          </div>
+
+          <!-- Daily Learning Commitment -->
+          <div class="flex items-start gap-4 p-5 rounded-2xl"
+               style="background:rgba(255,149,0,0.05);border:1px solid rgba(255,149,0,0.15)">
+            <div class="text-3xl flex-shrink-0">🔥</div>
+            <div>
+              <div class="font-bold text-white mb-1">Daily Study Commitment</div>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                Every day begins with structured NLP study — papers, coding exercises, and
+                model fine-tuning practice. This isn't occasional learning; it's a deliberate
+                skill-compounding strategy.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Right: NLP Capability Grid ── -->
+        <div class="reveal space-y-5" style="transition-delay:0.2s">
+
+          <div class="glass p-6 rounded-2xl glass-hover glass-teal-hover">
+            <div class="flex items-center gap-4 mb-3">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                   style="background:rgba(0,245,212,0.1)">🔤</div>
+              <h4 class="font-bold text-white">Transformer Architectures</h4>
+            </div>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Deep study of BERT, GPT, T5, and LLaMA architectures — understanding attention mechanisms,
+              positional encoding, and fine-tuning strategies for domain-specific tasks.
+            </p>
+          </div>
+
+          <div class="glass p-6 rounded-2xl glass-hover">
+            <div class="flex items-center gap-4 mb-3">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                   style="background:rgba(255,149,0,0.1)">🔍</div>
+              <h4 class="font-bold text-white">Semantic Search & RAG</h4>
+            </div>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Building Retrieval-Augmented Generation pipelines that combine vector databases
+              (FAISS, Pinecone) with LLMs for accurate, context-grounded responses.
+            </p>
+          </div>
+
+          <div class="glass p-6 rounded-2xl glass-hover glass-teal-hover">
+            <div class="flex items-center gap-4 mb-3">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                   style="background:rgba(0,245,212,0.1)">🤖</div>
+              <h4 class="font-bold text-white">Context-Aware AI Agents</h4>
+            </div>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Designing autonomous agents that understand multi-turn dialogue, maintain context
+              across sessions, and execute complex multi-step workflows using NLP-driven reasoning.
+            </p>
+          </div>
+
+          <div class="glass p-6 rounded-2xl glass-hover">
+            <div class="flex items-center gap-4 mb-3">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                   style="background:rgba(255,149,0,0.1)">📊</div>
+              <h4 class="font-bold text-white">Sentiment & Intent Analysis</h4>
+            </div>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Extracting business intelligence from unstructured text — customer sentiment,
+              intent classification, entity recognition — turning language into data.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep my-2"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CONTACT / FOOTER SECTION
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="contact" class="relative py-28 overflow-hidden">
+    <div class="absolute left-0 bottom-0 w-96 h-96 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle,rgba(0,245,212,0.05) 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="absolute right-0 top-0 w-80 h-80 rounded-full pointer-events-none"
+         style="background:radial-gradient(circle,rgba(255,149,0,0.05) 0%,transparent 70%);filter:blur(50px)"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-label mb-6 reveal">Get in Touch</div>
+      <div class="text-center mb-16 reveal" style="transition-delay:0.1s">
+        <h2 class="font-poppins font-black text-4xl lg:text-5xl mb-4">
+          Let's Build Something<br/>
+          <span class="gradient-text">Extraordinary Together</span>
+        </h2>
+        <p class="text-gray-500 max-w-lg mx-auto">
+          Have a project that needs AI automation, a data challenge that needs solving,
+          or just want to connect? My inbox is always open.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+        <!-- ── Left: Contact Info ── -->
+        <div class="reveal-left space-y-6">
+          <a href="https://github.com/MANOJDUBEY2" target="_blank" rel="noopener noreferrer"
+             class="glass glass-hover flex items-center gap-5 p-6 rounded-2xl group">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                 style="background:rgba(255,255,255,0.05)">
+              <i class="fab fa-github" style="color:#E6EDF3"></i>
+            </div>
+            <div class="flex-1">
+              <div class="font-bold text-white mb-1">GitHub</div>
+              <div class="text-sm" style="color:#00F5D4">github.com/MANOJDUBEY2</div>
+              <div class="text-xs text-gray-600 mt-1">Explore all projects, contributions & code</div>
+            </div>
+            <i class="fas fa-arrow-right text-gray-600 group-hover:text-saffron group-hover:translate-x-2 transition-all" style="color:#484F58"></i>
+          </a>
+
+          <div class="glass p-6 rounded-2xl flex items-center gap-5"
+               style="border-color:rgba(255,149,0,0.15)">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                 style="background:rgba(255,149,0,0.08)">
+              <i class="fas fa-envelope" style="color:#FF9500"></i>
+            </div>
+            <div>
+              <div class="font-bold text-white mb-1">Email</div>
+              <div class="text-sm" style="color:#FF9500">manoj.ai.solutions@gmail.com</div>
+              <div class="text-xs text-gray-600 mt-1">Professional enquiries & collaborations</div>
+            </div>
+          </div>
+
+          <div class="glass p-6 rounded-2xl flex items-center gap-5"
+               style="border-color:rgba(0,245,212,0.1)">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                 style="background:rgba(0,245,212,0.06)">
+              <i class="fab fa-linkedin-in" style="color:#00F5D4"></i>
+            </div>
+            <div>
+              <div class="font-bold text-white mb-1">LinkedIn</div>
+              <div class="text-sm" style="color:#00F5D4">linkedin.com/in/manoj-dubey</div>
+              <div class="text-xs text-gray-600 mt-1">Professional network & career updates</div>
+            </div>
+          </div>
+
+          <!-- What I'm Open To -->
+          <div class="p-6 rounded-2xl"
+               style="background:linear-gradient(135deg,rgba(255,149,0,0.05),rgba(0,245,212,0.04));border:1px solid rgba(255,255,255,0.06)">
+            <div class="font-bold text-white mb-4">I'm Currently Open To:</div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#FF9500"></div>
+                <span class="text-sm text-gray-400">Full-time Data Science / ML roles</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#00F5D4"></div>
+                <span class="text-sm text-gray-400">AI automation consultancy projects</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#FF9500"></div>
+                <span class="text-sm text-gray-400">Research collaborations in NLP & LLMs</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#00F5D4"></div>
+                <span class="text-sm text-gray-400">Open-source AI project contributions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Right: Contact Form ── -->
+        <div class="reveal" style="transition-delay:0.2s">
+          <div class="glass p-8 rounded-3xl" style="border-color:rgba(0,245,212,0.1)">
+            <h3 class="font-poppins font-bold text-xl text-white mb-6">Send a Message</h3>
+            <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-xs text-gray-500 mb-2 block font-medium">Your Name</label>
+                  <input type="text" placeholder="John Smith" class="form-input" required />
+                </div>
+                <div>
+                  <label class="text-xs text-gray-500 mb-2 block font-medium">Email Address</label>
+                  <input type="email" placeholder="john@company.com" class="form-input" required />
+                </div>
+              </div>
+              <div>
+                <label class="text-xs text-gray-500 mb-2 block font-medium">Subject</label>
+                <input type="text" placeholder="AI Automation Project Enquiry" class="form-input" />
+              </div>
+              <div>
+                <label class="text-xs text-gray-500 mb-2 block font-medium">Message</label>
+                <textarea rows="5" placeholder="Tell me about your project, the data challenge you're facing, or just say hello..." class="form-input resize-none" required></textarea>
+              </div>
+              <button type="submit" class="btn-saffron w-full justify-center text-base py-4">
+                <i class="fas fa-paper-plane"></i>
+                <span id="submit-text">Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="py-12 border-t" style="border-color:rgba(255,255,255,0.05)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center"
+               style="background:linear-gradient(135deg,#FF9500,#00F5D4)">
+            <span class="font-black text-sm" style="color:#060811">M</span>
+          </div>
+          <div>
+            <div class="font-poppins font-bold gradient-text text-lg">Manoj</div>
+            <div class="text-xs text-gray-600">Data Science & AI Engineer</div>
+          </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex items-center gap-6">
+          <a href="#about"    class="footer-link">About</a>
+          <a href="#stack"    class="footer-link">Stack</a>
+          <a href="#projects" class="footer-link">Projects</a>
+          <a href="#nlp"      class="footer-link">NLP Edge</a>
+          <a href="#contact"  class="footer-link">Contact</a>
+        </div>
+
+        <!-- Social -->
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/MANOJDUBEY2" target="_blank" rel="noopener noreferrer"
+             class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+             style="background:rgba(255,255,255,0.05);color:#8B949E"
+             onmouseover="this.style.background='rgba(255,149,0,0.12)';this.style.color='#FF9500'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#8B949E'">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#contact"
+             class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+             style="background:rgba(255,255,255,0.05);color:#8B949E"
+             onmouseover="this.style.background='rgba(0,245,212,0.1)';this.style.color='#00F5D4'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#8B949E'">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:manoj.ai.solutions@gmail.com"
+             class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+             style="background:rgba(255,255,255,0.05);color:#8B949E"
+             onmouseover="this.style.background='rgba(255,149,0,0.1)';this.style.color='#FF9500'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#8B949E'">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-sep mt-8 mb-6"></div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-700">
+        <div>© 2025 Manoj. Crafted with ❤️ & Data.</div>
+        <div class="flex items-center gap-2">
+          <div class="live-dot" style="width:6px;height:6px"></div>
+          <span style="color:#00F5D4">Actively learning NLP daily</span>
+        </div>
+        <a href="https://github.com/MANOJDUBEY2" target="_blank" class="footer-link flex items-center gap-1.5">
+          <i class="fab fa-github"></i> github.com/MANOJDUBEY2
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       JAVASCRIPT – All Logic
+  ═══════════════════════════════════════════════════════════ -->
+  <script>
+    // ── 1. MATRIX/DATA STREAM CANVAS BACKGROUND ───────────────
+    (function initMatrixCanvas() {
+      const canvas = document.getElementById("matrix-canvas");
+      const ctx = canvas.getContext("2d");
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      const chars = "01アイウエオカキクケコデータサイエンス人工知能MLAINLP10∑∂∫≈∞βαλ".split("");
+      const fontSize = 13;
+      let cols = Math.floor(window.innerWidth / fontSize);
+      let drops = Array(cols).fill(1);
+
+      const colors = ["#FF9500", "#00F5D4", "#FFB347", "#7FFFD4"];
+
+      function draw() {
+        ctx.fillStyle = "rgba(6, 8, 17, 0.06)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        drops.forEach((y, i) => {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          ctx.font = `${fontSize}px monospace`;
+          ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+          ctx.fillText(char, i * fontSize, y * fontSize);
+
+          if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        });
+      }
+
+      setInterval(draw, 55);
+      window.addEventListener("resize", () => {
+        resize();
+        cols = Math.floor(window.innerWidth / fontSize);
+        drops = Array(cols).fill(1);
+      });
+    })();
+
+    // ── 2. NAVBAR SCROLL BEHAVIOUR ────────────────────────────
+    (function initNavbar() {
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 60) {
+          navbar.style.padding = "8px 0";
+          navbar.style.boxShadow = "0 4px 30px rgba(0,0,0,0.5)";
+        } else {
+          navbar.style.padding = "";
+          navbar.style.boxShadow = "";
+        }
+      });
+    })();
+
+    // ── 3. MOBILE MENU TOGGLE ─────────────────────────────────
+    (function initMobileMenu() {
+      const btn   = document.getElementById("menu-toggle");
+      const menu  = document.getElementById("mobile-menu");
+      const links = menu.querySelectorAll("a");
+      let open = false;
+
+      btn.addEventListener("click", () => {
+        open = !open;
+        menu.classList.toggle("hidden", !open);
+        btn.innerHTML = open
+          ? '<i class="fas fa-times text-xl" style="color:#FF9500"></i>'
+          : '<i class="fas fa-bars text-xl"></i>';
+      });
+
+      links.forEach(l => l.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        open = false;
+        btn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+      }));
+    })();
+
+    // ── 4. TYPING ANIMATION (HERO) ────────────────────────────
+    (function initTyping() {
+      const phrases = [
+        "Data Science Engineer",
+        "AI-Native Solution Architect",
+        "Machine Learning Developer",
+        "Prompt Engineering Specialist",
+        "NLP Enthusiast & Daily Learner",
+        "Real-Time Data Analyst",
+      ];
+      const el = document.getElementById("typed-text");
+      let pIdx = 0, cIdx = 0, deleting = false;
+
+      function type() {
+        const phrase = phrases[pIdx];
+        if (!deleting) {
+          el.textContent = phrase.slice(0, ++cIdx);
+          if (cIdx === phrase.length) {
+            setTimeout(() => { deleting = true; type(); }, 2000);
+            return;
+          }
+        } else {
+          el.textContent = phrase.slice(0, --cIdx);
+          if (cIdx === 0) {
+            deleting = false;
+            pIdx = (pIdx + 1) % phrases.length;
+          }
+        }
+        setTimeout(type, deleting ? 45 : 85);
+      }
+      type();
+    })();
+
+    // ── 5. INTERSECTION OBSERVER – SCROLL REVEAL ─────────────
+    (function initScrollReveal() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+
+              // Animate skill bars inside this element
+              e.target.querySelectorAll(".skill-bar-fill").forEach(bar => {
+                setTimeout(() => bar.classList.add("animated"), 200);
+              });
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal, .reveal-left").forEach(el => observer.observe(el));
+    })();
+
+    // ── 6. SMOOTH SCROLL FOR ANCHOR LINKS ─────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // ── 7. CONTACT FORM SUBMIT HANDLER ───────────────────────
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn  = e.target.querySelector("button[type='submit']");
+      const text = document.getElementById("submit-text");
+
+      btn.disabled = true;
+      btn.style.opacity = "0.7";
+      text.textContent = "Sending...";
+
+      setTimeout(() => {
+        text.textContent = "Message Sent! ✓";
+        btn.style.background = "linear-gradient(135deg, #00C4A7, #00F5D4)";
+        setTimeout(() => {
+          e.target.reset();
+          btn.disabled = false;
+          btn.style.opacity = "1";
+          btn.style.background = "";
+          text.textContent = "Send Message";
+        }, 3000);
+      }, 1800);
+    }
+
+    // ── 8. ACTIVE NAV HIGHLIGHT ON SCROLL ─────────────────────
+    (function initActiveNav() {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - 140) current = s.getAttribute("id");
+        });
+        navLinks.forEach(l => {
+          l.style.color = "";
+          if (l.getAttribute("href") === `#${current}`) l.style.color = "#FF9500";
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
