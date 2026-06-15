@@ -175,7 +175,7 @@ export default function ChatWidget() {
                     <img 
                       src={manojAvatar} 
                       alt="M" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                       onError={(e) => {
                         // Fallback icon if image doesn't load
                         e.currentTarget.style.display = 'none';

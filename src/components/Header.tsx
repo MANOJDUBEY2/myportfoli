@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Github } from "lucide-react";
+import manojLogo from "./manoj.png";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,9 +29,9 @@ export default function Header() {
             style={{ background: "linear-gradient(135deg,#FF9500,#00F5D4)" }}
           >
             <img
-              src="manoj.png"
+              src={manojLogo}
               alt="M"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               onError={(e) => {
                 e.currentTarget.style.display = "none";
               }}
